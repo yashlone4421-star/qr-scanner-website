@@ -3,36 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QR Scanner - Home</title>
+  <title>QR Code Scanner</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav>
-    <h2 class="logo">QR Scanner</h2>
-    <ul>
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="scanner.html">Scanner</a></li>
-    </ul>
-  </nav>
+  <header>
+    <nav>
+      <div class="logo">QR Scanner</div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#" class="active">Scanner</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Welcome to QR Scanner</h1>
-    <p>Fast, reliable, and easy QR code scanning tool.</p>
-    <a href="scanner.html" class="btn">Start Scanning 🚀</a>
-  </section>
-<input type="file" id="uploadBtn" accept="image/*">
-<p id="result">Decoded result will appear here...</p>
+  <main>
+    <section class="scanner-container">
+      <h1>QR Code Scanner</h1>
+      <div class="upload-box">
+        <label for="uploadBtn" class="upload-label">
+          <span>📷 Upload QR Image</span>
+        </label>
+        <input type="file" id="uploadBtn" accept="image/*" hidden>
+      </div>
+      <p id="result">Decoded result will appear here...</p>
+    </section>
+  </main>
 
-<script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
-<script src="script.js"></script>
   <footer>
     <p>Made with ❤ | QR Scanner Project</p>
   </footer>
+
+  <!-- QR decoding library -->
+  <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
+  <!-- Your JS -->
+  <script src="script.js"></script>
 </body>
 </html>
+
 
 
