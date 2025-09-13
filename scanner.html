@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Scanner - Scanner</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+</head>
+<body>
+  <nav>
+    <h2 class="logo">QR Scanner</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="scanner.html" class="active">Scanner</a></li>
+    </ul>
+  </nav>
+
+  <section class="page-content">
+    <h1>QR Code Scanner</h1>
+    <div class="scanner-card">
+      <div id="reader"></div>
+      <label for="qr-input-file" class="upload-btn">Upload QR Image</label>
+      <input type="file" id="qr-input-file" accept="image/*" hidden>
+      <div id="result">📋 Decoded result will appear here...</div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Made with ❤ | QR Scanner Project</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
