@@ -1,46 +1,31 @@
-// ✅ QR SCANNER (only on scanner.html)
-function onScanSuccess(decodedText) {
-  document.getElementById("result").innerHTML =
-    `<b>✅ Decoded Text:</b><br> ${decodedText} <br><br>
-     <a href="${decodedText}" target="_blank" style="color: #ffd700;">Open Link</a>`;
-}
+const uploadBtn = document.getElementById("uploadBtn");
+const resultBox = document.getElementById("result");
 
-function onScanError(errorMessage) {
-  console.log("Scan error: ", errorMessage);
-}
+uploadBtn.addEventListener("change", function (event) {
+  const file = event.target.files[0];
+  if (!file) return;
 
-if (document.getElementById("reader")) {
-  const html5QrCode = new Html5Qrcode("reader");
+  const reader = new FileReader();
+  reader.onload = function () {
+    const img = new Image();
+    img.src = reader.result;
 
-  // Ask for camera devices
-  Html5Qrcode.getCameras().then(devices => {
-    if (devices && devices.length) {
-      const cameraId = devices[0].id; // use first camera
-      html5QrCode.start(
-        cameraId,
-        { fps: 10, qrbox: { width: 250, height: 250 } },
-        onScanSuccess,
-        onScanError
-      );
-    }
-  }).catch(err => {
-    console.error("Camera access error:", err);
-    document.getElementById("result").innerText = "❌ Camera not accessible.";
-  });
+    img.onload = function () {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      context.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-  // File upload
-  document.getElementById("qr-input-file").addEventListener("change", e => {
-    if (e.target.files.length == 0) return;
-    const file = e.target.files[0];
-    html5QrCode.scanFile(file, true)
-      .then(decodedText => {
-        document.getElementById("result").innerHTML =
-          `<b>✅ Decoded Text:</b><br> ${decodedText} <br><br>
-           <a href="${decodedText}" target="_blank" style="color: #ffd700;">Open Link</a>`;
-      })
-      .catch(err => {
-        document.getElementById("result").innerHTML = "❌ Error decoding file.";
-        console.error(err);
-      });
-  });
-}
+      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+      const code = jsQR(imageData.data, canvas.width, canvas.height);
+
+      if (code) {
+        resultBox.innerText = "✅ QR Code: " + code.data;
+      } else {
+        resultBox.innerText = "❌ No QR code found!";
+      }
+    };
+  };
+  reader.readAsDataURL(file);
+});
