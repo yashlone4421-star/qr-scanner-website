@@ -4,9 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QR Scanner - About</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Global Reset */
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+    body { background: linear-gradient(135deg, #1d1d1d, #2c2c54); color:#fff; line-height:1.6; }
+
+    /* Navbar */
+    nav { display:flex; justify-content:space-between; align-items:center; padding:20px 10%; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); }
+    .logo { font-size:1.5rem; font-weight:bold; color:#00ffcc; }
+    nav ul { list-style:none; display:flex; gap:20px; }
+    nav ul li a { text-decoration:none; color:#fff; padding:5px 10px; border-radius:5px; transition:0.3s; }
+    nav ul li a:hover, nav ul li a.active { background:#00ffcc; color:#000; }
+
+    /* Hero Banner */
+    .hero-banner { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; padding:80px 10%; gap:30px; }
+    .hero-text { flex:1; min-width:300px; }
+    .hero-text h1 { font-size:2.8rem; color:#00ffcc; margin-bottom:20px; }
+    .hero-text p { font-size:1.2rem; color:#ccc; }
+    .hero-image { flex:1; min-width:300px; text-align:center; }
+    .hero-image img { width:100%; max-width:400px; border-radius:20px; animation: float 3s ease-in-out infinite; }
+    @keyframes float { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-10px); } }
+
+    /* Sections */
+    section { padding:60px 10%; }
+    section h2 { font-size:2rem; text-align:center; color:#00ffcc; margin-bottom:40px; }
+    section p { text-align:center; max-width:800px; margin:0 auto 40px; color:#ccc; }
+
+    /* Features Cards */
+    .features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+    .card { background: rgba(255,255,255,0.05); padding:30px; border-radius:15px; text-align:center; transition:0.3s; }
+    .card:hover { transform: translateY(-10px); background: rgba(0,255,204,0.1); }
+    .card h3 { margin-bottom:15px; color:#00ffcc; }
+
+    /* Team Section */
+    .team-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; text-align:center; }
+    .team-member { background: rgba(255,255,255,0.05); padding:20px; border-radius:15px; transition:0.3s; }
+    .team-member img { width:100px; height:100px; border-radius:50%; margin-bottom:15px; }
+    .team-member h4 { margin-bottom:10px; color:#00ffcc; }
+    .team-member p { color:#ccc; font-size:0.9rem; }
+
+    /* Footer */
+    footer { text-align:center; padding:20px; background:#111; margin-top:40px; font-size:0.9rem; color:#aaa; }
+
+    /* Responsive */
+    @media(max-width:900px) {
+      nav { flex-direction:column; gap:10px; }
+      nav ul { flex-direction:column; gap:10px; align-items:center; }
+      .hero-banner { flex-direction:column; text-align:center; }
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Navbar -->
   <nav>
     <h2 class="logo">QR Scanner</h2>
     <ul>
@@ -17,14 +67,64 @@
     </ul>
   </nav>
 
-  <section class="page-content">
-    <h1>About Us</h1>
-    <p>This project allows you to scan QR codes using your camera or by uploading an image. 
-       It’s built with HTML, CSS, and JavaScript for simplicity and performance.</p>
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div class="hero-text">
+      <h1>About QR Scanner</h1>
+      <p>Our QR Scanner project is designed to provide a fast, secure, and user-friendly experience for scanning QR codes using your camera or uploaded images. Built with HTML, CSS, and JavaScript, it’s fully browser-based, responsive, and modern.</p>
+    </div>
+   
   </section>
 
+  <!-- Features Section -->
+  <section>
+    <h2>Features</h2>
+    <div class="features-grid">
+      <div class="card">
+        <h3>Instant Scanning</h3>
+        <p>Scan QR codes in milliseconds with high accuracy using advanced browser technology.</p>
+      </div>
+      <div class="card">
+        <h3>Secure & Private</h3>
+        <p>No data is stored or shared. Your scans remain completely private and secure.</p>
+      </div>
+      <div class="card">
+        <h3>Mobile Friendly</h3>
+        <p>Works seamlessly on all devices including smartphones, tablets, and desktops.</p>
+      </div>
+      <div class="card">
+        <h3>User Friendly</h3>
+        <p>Easy to use interface that allows everyone to scan QR codes without complications.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section>
+    <h2>Meet the Team</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="team1.png" alt="Team Member">
+        <h4>Yash Lone</h4>
+        <p>Frontend Developer & Project Lead</p>
+      </div>
+      <div class="team-member">
+        <img src="team2.png" alt="Team Member">
+        <h4>Ritesh Thakare</h4>
+        <p>Backend Developer & QR Specialist</p>
+      </div>
+      <div class="team-member">
+        <img src="team3.png" alt="Team Member">
+        <h4>Nishant Mahajan</h4>
+        <p>UI/UX Designer</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
     <p>Made with ❤ | QR Scanner Project</p>
   </footer>
+
 </body>
 </html>

@@ -3,35 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QR Scanner - Scanner</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <title>QR Code Scanner</title>
+  <style>
+    /* Global Reset */
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+    body { background: linear-gradient(135deg, #1d1d1d, #2c2c54); color:#fff; line-height:1.6; }
+
+    /* Navbar */
+    nav { display:flex; justify-content:space-between; align-items:center; padding:20px 10%; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); }
+    .logo { font-size:1.5rem; font-weight:bold; color:#00ffcc; }
+    nav ul { list-style:none; display:flex; gap:20px; }
+    nav ul li a { text-decoration:none; color:#fff; padding:5px 10px; border-radius:5px; transition:0.3s; }
+    nav ul li a:hover, nav ul li a.active { background:#00ffcc; color:#000; }
+
+    /* Hero Section */
+    .hero { display:flex; flex-direction:column; justify-content:center; align-items:center; padding:80px 10%; gap:30px; text-align:center; }
+    .hero h1 { font-size:2.8rem; color:#00ffcc; margin-bottom:20px; }
+    .hero p { font-size:1.2rem; color:#ccc; margin-bottom:40px; max-width:700px; }
+
+    /* Scanner Box */
+    .scanner-container { background: rgba(255,255,255,0.05); padding:40px; border-radius:20px; box-shadow:0 0 20px rgba(0,255,204,0.2); max-width:500px; width:100%; text-align:center; }
+    .upload-label { display:inline-block; padding:15px 25px; border-radius:30px; background:#00ffcc; color:#000; cursor:pointer; font-weight:bold; transition:0.3s; }
+    .upload-label:hover { transform:scale(1.05); box-shadow:0 0 15px rgba(0,255,204,0.7); }
+    #result { margin-top:20px; font-size:1.1rem; color:#ccc; word-wrap:break-word; }
+
+    /* Footer */
+    footer { text-align:center; padding:20px; background:#111; margin-top:40px; font-size:0.9rem; color:#aaa; }
+
+    /* Responsive */
+    @media(max-width:600px) {
+      nav { flex-direction:column; gap:10px; }
+      nav ul { flex-direction:column; gap:10px; align-items:center; }
+      .scanner-container { padding:30px; }
+    }
+  </style>
 </head>
 <body>
-  <nav>
-    <h2 class="logo">QR Scanner</h2>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="scanner.html" class="active">Scanner</a></li>
-    </ul>
-  </nav>
 
-  <section class="page-content">
+  <!-- Navbar -->
+  <header>
+    <nav>
+      <div class="logo">QR Scanner</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#" class="active">Scanner</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
     <h1>QR Code Scanner</h1>
-    <div class="scanner-card">
-      <div id="reader"></div>
-      <label for="qr-input-file" class="upload-btn">Upload QR Image</label>
-      <input type="file" id="qr-input-file" accept="image/*" hidden>
-      <div id="result">📋 Decoded result will appear here...</div>
+    <p>Upload an image containing a QR code and decode it instantly. Fast, secure, and fully browser-based.</p>
+
+    <!-- Scanner Box -->
+    <div class="scanner-container">
+      <label for="uploadBtn" class="upload-label">📷 Upload QR Image</label>
+      <input type="file" id="uploadBtn" accept="image/*" hidden>
+      <p id="result">Decoded result will appear here...</p>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>Made with ❤ | QR Scanner Project</p>
   </footer>
 
+  <!-- QR decoding library -->
+  <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
+  <!-- Your JS -->
   <script src="script.js"></script>
 </body>
 </html>
+
